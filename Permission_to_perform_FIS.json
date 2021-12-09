@@ -1,0 +1,23 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowFISExperimentRoleFaultInjectionReadOnly",
+            "Effect": "Allow",
+            "Action": [
+                "iam:ListRoles"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "AllowFISExperimentRoleFaultInjectionActions",
+            "Effect": "Allow",
+            "Action": [
+                "fis:InjectApiInternalError",
+                "fis:InjectApiThrottleError",
+                "fis:InjectApiUnavailableError"
+            ],
+            "Resource": "arn:*:fis:*:*:experiment/*"
+        }
+    ]
+}

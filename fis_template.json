@@ -1,0 +1,31 @@
+{
+    "description": "Experiment to use FIS in EKS Spot instances",
+    "targets": {
+        "SpotInstances-Target-1": {
+            "resourceType": "aws:ec2:spot-instance",
+            "resourceArns": [ replace_instance_ids ],
+            "selectionMode": "ALL"
+        }
+    },
+    "actions": {
+        "Spot_Interruption": {
+            "actionId": "aws:ec2:send-spot-instance-interruptions",
+            "description": "Interruption_Spot_Instances",
+            "parameters": {
+                "durationBeforeInterruption": "PT2M"
+            },
+            "targets": {
+                "SpotInstances": "SpotInstances-Target-1"
+            }
+        }
+    },
+    "stopConditions": [
+        {
+            "source": "none"
+        }
+    ],
+    "roleArn": "replace_arn_of_role",
+    "tags": {
+        "Name": "Spot_EKS_FIS_Experiment"
+    }
+}
