@@ -1,9 +1,9 @@
 # aws-fault-injection-simulator
 
-When we use EKS in AWS and we have a lot of microservices that require a lot of resources (CPU and RAM) we cannot all time use on-demand type of EC2 instances. Especially if you use GPU-type instances which is very expensive. Due to that, we had to choose Spot (the price will be a minimum of 50% less than on-demand)instances by priority. To prefer Spot instance type in AWS we must apply best practices of EKS usage.
-AWS Cluster Autoscaler
-Priority based expander for Cluster-Autoscaler
-AWS Node Termination Handler
+#### When we use EKS in AWS and we have a lot of microservices that require a lot of resources (CPU and RAM) we cannot all time use on-demand type of EC2 instances. Especially if you use GPU-type instances which is very expensive. Due to that, we had to choose Spot (the price will be a minimum of 50% less than on-demand)instances by priority. To prefer Spot instance type in AWS we must apply best practices of EKS usage.
+- ![AWS Cluster Autoscaler](http://zuil.com)
+- Priority based expander for Cluster-Autoscaler
+- AWS Node Termination Handler
 
 When computing resources of our Worker nodes will not enough to our POD's AWS Cluster Autoscaler automatically creates a new Worker and join it to EKS master nodes and at the same time when we don't need this worker anymore, it will delete it automatically. 
 When we use multiple node groups with different types of EC2 instances we must group them by the types (For example memory-based high and low, CPU-based high and low, GPU-based high and low). After that, we must tell the cluster autoscaler to please scale nodes by priority(highest number is higher priority) which we defined inside of the configmap of our cluster-autoscaler-expander. For example like as the following:
